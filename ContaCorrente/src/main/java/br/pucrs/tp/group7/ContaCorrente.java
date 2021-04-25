@@ -8,7 +8,9 @@ public class ContaCorrente{
     public String categoria;
 
 
-    public ContaCorrente(){
+    public ContaCorrente(String nome,int numConta){
+        this.nomeCorrentista = nome;
+        this.numeroConta = numConta;
         this.saldo = 0;
         this.categoria = "Silver";
     }
@@ -35,7 +37,7 @@ public class ContaCorrente{
                 this.setCategoria("Gold");
             }
         }else if(cat.equals("Gold")){
-            if(saldo >= 2000000.00){
+            if(saldo >= 200000.00){
                 this.setCategoria("Platinum");
             }
         }
@@ -44,16 +46,19 @@ public class ContaCorrente{
         String cat = this.getCategoria();
         if(cat.equals("Gold")){
             if(saldo < 25000.00){
-                this.setCategoria("");
+                this.setCategoria("Silver");
             }
         }else if(cat.equals("Platinum")){
-            if(saldo < 1000000.00){
+            if(saldo < 100000.00){
                 this.setCategoria("Gold");
             }
         }
     }
     public boolean deposito(double valor){
-        if(this.getCategoria().equals("Gold")){
+        if(valor<0){
+            return false;
+        }
+        else if(this.getCategoria().equals("Gold")){
             valor += valor*0.01;
             this.saldo += valor;
         }else if(this.getCategoria().equals("Platinum")){
@@ -65,15 +70,26 @@ public class ContaCorrente{
         return true;
     }
     public boolean retirada(double valor){
-        if((saldo-valor) <0){
+        if((saldo-valor) < 0){
             return false;
         }else {
-            this.saldo -= valor;
+            this.saldo = saldo - valor;
             this.verificaCategoriaRetirada();
             return true;
         }
         
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " numeroConta='" + getNumeroConta() + "'" +
+            ", nomeCorrentista='" + getNomeCorrentista() + "'" +
+            ", saldo='" + getSaldo() + "'" +
+            ", categoria='" + getCategoria() + "'" +
+            "}";
+    }
+
 
 
 }
