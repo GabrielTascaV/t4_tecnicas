@@ -72,7 +72,6 @@ public class ContaCorrente{
             this.verificaCategoriaRetirada();
             return true;
         }
-//Nao sei
         
     }
 
