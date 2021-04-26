@@ -71,7 +71,7 @@ public class ContaCorrente{
     }
     public boolean retirada(double valor){
         if((saldo-valor) < 0){
-            return false;
+            return false; //Aqui é um caso de identificação de erro 
         }else {
             this.saldo = saldo - valor;
             this.verificaCategoriaRetirada();
