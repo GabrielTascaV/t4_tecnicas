@@ -56,7 +56,7 @@ public class ContaCorrente{
     }
     public boolean deposito(double valor){
         if(valor<0){
-            return false;
+            return false; //Aqui é um caso de identificação de erro 
         }
         else if(this.getCategoria().equals("Gold")){
             valor += valor*0.01;
